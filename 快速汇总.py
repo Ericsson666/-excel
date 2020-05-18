@@ -1,15 +1,14 @@
 #快速把多个excel里的内容汇总
 import xlrd
 import xlsxwriter as xlwt
-import os.path
-import os
+from os import path, listdir
 
 start_row = int(input('从第几行开始?>'))
 file_address = input('文件夹的地址是?>')
 workbook = xlwt.Workbook('{}\\汇总.xlsx'.format(file_address))
 worksheet = workbook.add_worksheet()
 n=0
-for i in os.listdir('{}\\'.format(file_address)):
+for i in listdir('{}\\'.format(file_address)):
     if i.endswith('xlsx'):
         file = xlrd.open_workbook(file_address+'\\'+i)
         info = file.sheet_by_index(0)
